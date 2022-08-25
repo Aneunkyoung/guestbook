@@ -315,7 +315,18 @@ public class GuestBookPanel extends JPanel{
 		guestBook.setDate(date);
 		guestBook.setContent(content);
 		
-		GuestBookDAO.getInstance().update(guestBook, no);
+		int rows = GuestBookDAO.getInstance().update(guestBook, no);
+		if(rows>0) {
+			try {
+				JOptionPane.showMessageDialog(this, no + "번의 방명록을 수정 완료하였습니다.");
+				displayAll();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			JOptionPane.showMessageDialog(this, "수정하고자 하는 정보가 없습니다.");
+		}
 		
 		contentText.setText(null);
 		try {

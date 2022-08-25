@@ -75,18 +75,6 @@ public class JoinPanel extends JPanel{
 		btnJoin.addActionListener(new ActionListener() {
 		      @Override
 		      public void actionPerformed(ActionEvent e) {
-		    	  String userEmailCheck = userEmail.getText();
-		    	  if(userEmailCheck.equals("") || userEmailCheck == null) {
-		    		  JOptionPane.showMessageDialog( null, "이메일을 입력해 주세요.");
-		    		  userEmail.requestFocus();
-		    		  return;
-		    	  }
-		    	  String userEmailReg="^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
-		    	  if(!Pattern.matches(userEmailReg, userEmailCheck)) {
-		    		  JOptionPane.showMessageDialog(null, "이메일 형식에 맞게 입력해주세요.    \n ex)  example@google.com");
-		    		  userEmail.requestFocus();
-		    		  return;
-		    	  }
 		    	  String userNameCheck = userName.getText();
 		    	  if(userNameCheck.equals("") || userNameCheck == null) {
 		    		  JOptionPane.showMessageDialog(null, "이름을 입력해 주세요.");
@@ -97,6 +85,18 @@ public class JoinPanel extends JPanel{
 		    	  if(!Pattern.matches(userNameReg, userNameCheck)) {
 		    		  JOptionPane.showMessageDialog(null, "이름은 2~5 범위의 한글만 입력해 주세요.");
 		    		  userName.requestFocus();
+		    		  return;
+		    	  }
+		    	  String userEmailCheck = userEmail.getText();
+		    	  if(userEmailCheck.equals("") || userEmailCheck == null) {
+		    		  JOptionPane.showMessageDialog( null, "이메일을 입력해 주세요.");
+		    		  userEmail.requestFocus();
+		    		  return;
+		    	  }
+		    	  String userEmailReg="^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
+		    	  if(!Pattern.matches(userEmailReg, userEmailCheck)) {
+		    		  JOptionPane.showMessageDialog(null, "이메일 형식에 맞게 입력해주세요.    \n ex)  example@google.com");
+		    		  userEmail.requestFocus();
 		    		  return;
 		    	  }
 		    	  @SuppressWarnings("deprecation")

@@ -4,15 +4,22 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
 
+import GuestBook.GuestBookDAO;
+import GuestBook.GuestBookDTO;
 import controller.Controller;
 import user.UserDAO;
 import user.UserDTO;
@@ -77,12 +84,19 @@ public class UserEditFrame extends JFrame{
 		update.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				String userNameCheck = uname.getText();
+		    	  if(userNameCheck.equals("") || userNameCheck == null) {
+		    		  JOptionPane.showMessageDialog(null, "이름을 입력해 주세요.");
+		    		  uname.requestFocus();
+		    		  return;
+		    	  }
+		    	  
 				UserDTO user=new UserDTO();
 				String name = uname.getText();
 				user.setName(name);
 				int rows=UserDAO.getInstance().updateUser(user);
 				if(rows>0) {
-					JOptionPane.showMessageDialog(null, "수정 되었습니다.");
+					JOptionPane.showMessageDialog(null, "회원정보가 수정 되었습니다.");
 					dispose();
 					validate();
 					repaint();

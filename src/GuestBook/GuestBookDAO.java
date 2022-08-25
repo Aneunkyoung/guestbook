@@ -164,7 +164,7 @@ public class GuestBookDAO extends JdbcDAO{
 			
 			while(rs.next()) {
 				GuestBookDTO guestBook=new GuestBookDTO();
-				guestBook.setEmail(rs.getString("email"));
+				guestBook.setName(rs.getString("name"));
 				guestBook.setNo(rs.getInt("no"));
 				guestBook.setDate(rs.getString("dates").substring(0, 10));
 				guestBook.setContent(rs.getString("content"));

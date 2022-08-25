@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -68,6 +69,20 @@ public class MainPanel extends JPanel{
 		btnLogin.addActionListener(new ActionListener() {
 		      @Override
 		      public void actionPerformed(ActionEvent e) {
+		    	  String userEmailCheck = userEmail.getText();
+		    	  if(userEmailCheck.equals("") || userEmailCheck == null) {
+		    		  JOptionPane.showMessageDialog(null, "이메일을 입력해 주세요.");
+		    		  userEmail.requestFocus();
+		    		  return;
+		    	  }
+		    	  
+		    	  String usePasswordCheck = password.getText();
+		    	  if(usePasswordCheck.equals("") || usePasswordCheck == null) {
+		    		  JOptionPane.showMessageDialog(null, "비밀번호를 입력해 주세요.");
+		    		  password.requestFocus();
+		    		  return;
+		    	  }
+		    	  
 		    	  loginUser();
 		      }
 		});
