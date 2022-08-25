@@ -23,6 +23,7 @@ public class JdbcDAO {
 			e.printStackTrace();
 		}
 	}
+	
 	public Connection getConnection() {
 		Connection con = null;
 		try {
@@ -32,6 +33,7 @@ public class JdbcDAO {
 		}
 		return con;
 	}
+	
 	public void close(Connection con) {
 		try {
 			if(con!=null) con.close();
@@ -39,6 +41,7 @@ public class JdbcDAO {
 			e.printStackTrace();
 		}
 	}
+	
 	public void close(Connection con, PreparedStatement pstmt) {
 		try {
 			if(pstmt!=null) pstmt.close();
@@ -47,6 +50,7 @@ public class JdbcDAO {
 			e.printStackTrace();
 		}
 	}
+	
 	public void close(Connection con, PreparedStatement pstmt, ResultSet rs) {
 		try {
 			if(pstmt!=null) pstmt.close();
